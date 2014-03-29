@@ -1,5 +1,3 @@
-// var _ = require("underscore");
-
 var beak = {
 	_: require("underscore"),
 
@@ -14,7 +12,6 @@ var beak = {
 	],
 
 	getBitcoinPrice: function(_at, _in) {
-		debugger
 		return "Hey ! BTC price is 450€";
 	}
 };

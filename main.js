@@ -12,11 +12,3 @@ var auth_params = {
 }
 
 woodie.authenticate(auth_params).listen();
-
-
-
-// var status = 'What is the price of the Bitcoin';
-
-
-
-debugger

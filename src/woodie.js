@@ -35,8 +35,6 @@ Woody.prototype.add = function(woodpeecker) {
 Woody.prototype.match = function(str) {
 	var parent = this;
 
-	debugger
-
 	var matches = parent.Forest.filter(function(pattern) {
 		return str.match(pattern.regxp);
 	});
@@ -46,7 +44,6 @@ Woody.prototype.match = function(str) {
 
 Woody.prototype.react = function(pattern) {
 	var parent = this;
-	debugger
 	var result = parent.Beaks[pattern.parent][pattern.action]();
 	
 	return result;
@@ -79,14 +76,7 @@ Woody.prototype.listen = function() {
 
   };
 
-  
-
   req.addListener("response", parent.read.bind(parent)).end();
-
-
-   
-
-	
 
   return parent;
 }
@@ -97,7 +87,7 @@ Woody.prototype.read = function(res) {
   res.setEncoding("utf8");
 
   res.addListener("data", function (data) {
-  	debugger
+
 		var json, status;
 
     try {
@@ -107,13 +97,9 @@ Woody.prototype.read = function(res) {
 		if (!json.hasOwnProperty("text"))
 			return undefined;
 
-		var status = new Status({"body": json});  
-		debugger  	
-  	
+		var status = new Status({"body": json});    	
 		var pattern = parent.match(status.text);
 		var result  = parent.react(pattern);
-
-		debugger
 
 		if (pattern.outcome == "reply") {
 			status.reply(result);
@@ -126,7 +112,6 @@ Woody.prototype.read = function(res) {
   });
 
 }
-
 
 Woody.prototype.Auth = Auth;
 Woody.prototype.Status = Status;
